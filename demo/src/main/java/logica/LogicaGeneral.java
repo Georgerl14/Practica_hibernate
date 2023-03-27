@@ -2,8 +2,10 @@ package logica;
 
 import java.util.List;
 import interfaz.Interfaz;
+import tablas.Alumno;
 import tablas.Escuela;
 import tablas.EscuelaId;
+import tablas.Profesor;
 
 public class LogicaGeneral {
 
@@ -192,6 +194,22 @@ public class LogicaGeneral {
 
 		for (Escuela escuela : listaEscuelas) {
 			Interfaz.datosListaEscuelas(escuela);
+		}
+	}
+
+	public static void logicaMostrarAlumnos(Escuela escuela) {
+		List<Alumno> listaAlumnos = LogicaHQL.insertarListaAlumnos(escuela);
+
+		for (Alumno alumno : listaAlumnos) {
+			Interfaz.datosListaAlumnos(alumno);
+		}
+	}
+
+	public static void logicaMostrarProfesor(Escuela escuela) {
+		List<Profesor> listaProfesores = LogicaHQL.insertarListaProfesores(escuela);
+
+		for (Profesor profesor : listaProfesores) {
+			Interfaz.datosListaProfesores(profesor);
 		}
 	}
 

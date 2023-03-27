@@ -119,8 +119,7 @@ public class Alumno implements Serializable {
 
 
 	public String toString() {
-		return "Id: " + this.id + "\nNombre: " + this.nombre + "\nApellidos: " + this.primerApellido + " "
-				+ this.segundoApellido + "\nCodigo postal: " + this.codigoPostal;
+		return "[" + id + "] - Nombre: " + nombre + " apellidos: " + primerApellido + " " + this.segundoApellido + " codigo postal: " + this.codigoPostal;
 	}
 
 	public String datosActualizar() {

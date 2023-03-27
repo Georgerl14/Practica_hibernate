@@ -1,8 +1,11 @@
 package gestor;
 
 import interfaz.Interfaz;
+import logica.LogicaCRUD;
 import logica.LogicaGeneral;
 import logica.LogicaUtil;
+import tablas.Escuela;
+import tablas.EscuelaId;
 
 
 public class App {

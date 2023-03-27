@@ -1,7 +1,9 @@
 package interfaz;
 
 import logica.LogicaGeneral;
+import tablas.Alumno;
 import tablas.Escuela;
+import tablas.Profesor;
 
 public class Interfaz {
     public static void mostrarOpcionesEscuela() {
@@ -23,6 +25,24 @@ public class Interfaz {
         System.out.println(escuela.toString());
         System.out.println(escuela.informacionExtra());
         System.out.println();
+    }
+
+    public static void mostrarAlumnos(Escuela escuela) {
+        System.out.println("Lista de alumnos:" + "\n");
+        LogicaGeneral.logicaMostrarAlumnos(escuela);
+    }
+
+    public static void datosListaAlumnos(Alumno alumno) {
+        System.out.println(alumno.toString());
+    }
+
+    public static void mostrarProfesores(Escuela escuela) {
+        System.out.println("Lista de profesores:" + "\n");
+        LogicaGeneral.logicaMostrarProfesor(escuela);
+    }
+
+    public static void datosListaProfesores(Profesor profesor) {
+        System.out.println(profesor.toString());
     }
 
     public static void mostrarCrearEscuela(Escuela escuela) {
