@@ -23,13 +23,14 @@ public class LogicaCRUD {
 		try {
 			seccion.save(objeto);
 		} catch (PersistenceException e) {
-			e.printStackTrace();
 			System.out.println("Error persistencia");
 		} catch (Exception e) {
 			System.out.println("Error generico");
 			tx.rollback();
 		}
+		
 		tx.commit();
+		seccion.close();
 	}
 
 	public static void eliminarAlgo(Object object) {
@@ -40,6 +41,18 @@ public class LogicaCRUD {
 		seccion.delete(object);
 
 		tx.commit();
+		seccion.close();
+	}
+
+	public static void actualizarAlgo(Object object) {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session seccion = sessionFactory.openSession();
+		Transaction tx = seccion.beginTransaction();
+
+		seccion.update(object);
+
+		tx.commit();
+		seccion.close();
 	}
 
 	public static Escuela buscarEscuela(Integer idEscuela) {
@@ -50,6 +63,7 @@ public class LogicaCRUD {
 		try {
 			EscuelaId escuelaId = new EscuelaId(idEscuela);
 			escuela = (Escuela) session.load(Escuela.class, escuelaId);
+			System.out.println(escuela.getNombre());
 		} catch (ObjectNotFoundException e) {
 			System.out.println("No se ha encontrado la escuela");
 		}

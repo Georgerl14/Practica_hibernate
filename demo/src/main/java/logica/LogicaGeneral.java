@@ -57,6 +57,44 @@ public class LogicaGeneral {
 		return false;
 	}
 
+	public static boolean ejecutarOpcionMenuEditarEscuela(int opcion, Escuela escuela) {
+		// Realizar la opción que sea necesaria.
+		switch (opcion) {
+			case 1:
+				modificarNombre(escuela);
+				break;
+
+			case 2:
+				modificarProvincia(escuela);
+				break;
+
+			case 3:
+				modificarTelefono(escuela);
+				break;
+
+			case 4:
+				return terminarEditar(escuela);
+
+			case 0:
+				return true;
+		}
+
+		return false;
+	}
+
+	private static boolean terminarEditar(Escuela escuela) {
+		// Comprobar si los campos estan vacios
+		try {
+			LogicaCRUD.actualizarAlgo(escuela);
+			System.out.println("La escuela se ha editado correctamente");
+			LogicaUtil.pulsarEnter();
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("No se pudo editar la escuela.");
+		}
+		return true;
+	}
+
 	private static void modificarId(Escuela escuela) {
 		System.out.println("Modificar id: ");
 		EscuelaId id = new EscuelaId(LogicaUtil.introducirOpcionIdDublicada(1, 999999));
@@ -97,20 +135,39 @@ public class LogicaGeneral {
 	}
 
 	public static void editarEscuela() {
+		boolean terminar;
 
-	}
-
-	public static void eliminarEscuela() {
-		System.out.println("¿Qué escuela quiere eliminar?");
-		System.out.println("n. Id de la escuela a eliminar");
+		System.out.println("¿Qué escuela quiere editar?");
+		System.out.println("n. Id de la escuela a editar");
+		System.out.println(".....");
 		System.out.println("0. Volver");
 
 		int opcion = LogicaUtil.introducirOpcionNumero(0, 9999999);
 		if (opcion != 0) {
 			opcion = LogicaUtil.introducirOpcionIdExistente(opcion);
-			
+			Escuela escAntigua = LogicaCRUD.buscarEscuela(opcion);
+			Escuela escNueva = LogicaUtil.clonarEscuela(escAntigua);
+			do {
+				Interfaz.mostrarEditarEscuela(escAntigua, escNueva);
+				opcion = LogicaUtil.introducirOpcionNumero(0, 4);
+				terminar = ejecutarOpcionMenuEditarEscuela(opcion, escNueva);
+			} while (!terminar);
+
+		}
+	}
+
+	public static void eliminarEscuela() {
+		System.out.println("¿Qué escuela quiere eliminar?");
+		System.out.println("n. Id de la escuela a eliminar");
+		System.out.println(".....");
+		System.out.println("0. Volver");
+
+		int opcion = LogicaUtil.introducirOpcionNumero(0, 9999999);
+		if (opcion != 0) {
+			opcion = LogicaUtil.introducirOpcionIdExistente(opcion);
+
 			Escuela escuela = LogicaCRUD.buscarEscuela(opcion);
-			if (LogicaUtil.estarSeguro()){
+			if (LogicaUtil.estarSeguro()) {
 				LogicaCRUD.eliminarAlgo(escuela);
 				System.out.println("Se ha elimido correctemente.");
 				LogicaUtil.pulsarEnter();

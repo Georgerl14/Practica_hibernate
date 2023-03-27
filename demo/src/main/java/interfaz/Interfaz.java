@@ -54,4 +54,31 @@ public class Interfaz {
         System.out.println("5. Terminar creación de escuela");
         System.out.println("0. Salir");
     }
+
+    public static void mostrarEditarEscuela(Escuela escAntigua, Escuela escNueva) {
+        System.out.println("-----------------");
+        System.out.println("Editar escuela");
+        System.out.println(".....");
+
+        if (escAntigua.getNombre().equals(escNueva.getNombre()))
+            System.out.println("1. Nombre: " + escAntigua.getNombre());
+        else
+            System.out.println("1. Nombre actual: " + escNueva.getNombre() + " antiguo: " + escAntigua.getNombre());
+
+        if (escAntigua.getProvincia().equals(escNueva.getProvincia()))
+            System.out.println("2. Provincia: " + escAntigua.getProvincia());
+        else
+            System.out.println(
+                    "2. Provincia actual: " + escNueva.getProvincia() + " antigua: " + escAntigua.getProvincia());
+
+        if (escAntigua.getTelefono() == escNueva.getTelefono())
+            System.out.println("3. Telefono: " + escAntigua.getTelefono());
+        else
+            System.out.println(
+                    "3. Telefono actual: " + escNueva.getTelefono() + " antigua: " + escAntigua.getTelefono());
+
+        System.out.println(".....");
+        System.out.println("4. Terminar editar la escuela");
+        System.out.println("0. Volver");
+    }
 }

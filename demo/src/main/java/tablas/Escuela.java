@@ -76,6 +76,18 @@ public class Escuela implements Serializable {
 		this.telefono = telefono;
 	}
 
+	public Escuela(EscuelaId escuelaId, String nombre, String provincia, int telefono,
+			Director director, List<Alumno> listaAlumno, Set<Profesor> profesores) {
+		super();
+		this.escuelaId = escuelaId;
+		this.nombre = nombre;
+		this.provincia = provincia;
+		this.telefono = telefono;
+		this.director = director;
+		this.listaAlumno = listaAlumno;
+		this.profesores = profesores;
+	}
+
 	public EscuelaId getEscuelaId() {
 		return escuelaId;
 	}
@@ -141,9 +153,10 @@ public class Escuela implements Serializable {
 	public String informacionExtra() {
 		try {
 			return "Director " + director.getNombre() + ", Número de alumnos: " + listaAlumno.size()
-			+ ", Número de profesores: " + profesores.size();
+					+ ", Número de profesores: " + profesores.size();
 		} catch (Exception e) {
-			return "Director (vacante disponible)"+ ", Número de alumnos: " + listaAlumno.size() + ", Número de profesores: " + profesores.size();
+			return "Director (vacante disponible)" + ", Número de alumnos: " + listaAlumno.size()
+					+ ", Número de profesores: " + profesores.size();
 		}
 	}
 

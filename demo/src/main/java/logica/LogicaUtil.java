@@ -2,6 +2,8 @@ package logica;
 
 import java.util.Scanner;
 
+import tablas.Escuela;
+
 public class LogicaUtil {
 
     public static int introducirOpcionNumero(int minimo, int maximo) {
@@ -146,5 +148,11 @@ public class LogicaUtil {
             sc.nextLine();
         } catch (Exception e) {
         }
+    }
+
+    public static Escuela clonarEscuela(Escuela escuela){
+        return new Escuela(escuela.getEscuelaId(), escuela.getNombre(), escuela.getProvincia(),
+        escuela.getTelefono(), escuela.getDirector(), escuela.getListaAlumno(),
+        escuela.getProfesores());
     }
 }
