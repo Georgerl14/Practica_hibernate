@@ -15,7 +15,7 @@ import tablas.Profesor;
 
 public class LogicaCRUD {
 
-    public static void agregarAlgo(Object objeto){
+	public static void agregarAlgo(Object objeto) {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session seccion = sessionFactory.openSession();
 		Transaction tx = seccion.beginTransaction();
@@ -23,7 +23,7 @@ public class LogicaCRUD {
 		try {
 			seccion.save(objeto);
 		} catch (PersistenceException e) {
-            e.printStackTrace();
+			e.printStackTrace();
 			System.out.println("Error persistencia");
 		} catch (Exception e) {
 			System.out.println("Error generico");
@@ -32,17 +32,32 @@ public class LogicaCRUD {
 		tx.commit();
 	}
 
-    public static void eliminarAlgo(Object regalo) {
+	public static void eliminarAlgo(Object object) {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session seccion = sessionFactory.openSession();
 		Transaction tx = seccion.beginTransaction();
 
-		seccion.delete(regalo);
+		seccion.delete(object);
 
 		tx.commit();
 	}
 
-    
+	public static Escuela buscarEscuela(Integer idEscuela) {
+		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+		Session session = sessionFactory.openSession();
+		Escuela escuela = null;
+
+		try {
+			EscuelaId escuelaId = new EscuelaId(idEscuela);
+			escuela = (Escuela) session.load(Escuela.class, escuelaId);
+		} catch (ObjectNotFoundException e) {
+			System.out.println("No se ha encontrado la escuela");
+		}
+
+		session.close();
+		return escuela;
+	}
+
 	private static void agregarAlumno() {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session seccion = sessionFactory.openSession();
@@ -326,4 +341,5 @@ public class LogicaCRUD {
 
 		tx.commit();
 	}
+
 }

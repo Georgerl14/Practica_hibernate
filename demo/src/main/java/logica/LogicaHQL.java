@@ -19,7 +19,7 @@ public class LogicaHQL {
         return listaEscuelas;
     }
 
-    public static boolean comprobarIdDublicada(int id) {
+    public static boolean comprobarId(int id) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {

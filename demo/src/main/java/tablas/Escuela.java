@@ -143,7 +143,7 @@ public class Escuela implements Serializable {
 			return "Director " + director.getNombre() + ", Número de alumnos: " + listaAlumno.size()
 			+ ", Número de profesores: " + profesores.size();
 		} catch (Exception e) {
-			return "Director (vacante disponible)"+ ",Número de alumnos: " + listaAlumno.size() + ", Número de profesores: " + profesores.size();
+			return "Director (vacante disponible)"+ ", Número de alumnos: " + listaAlumno.size() + ", Número de profesores: " + profesores.size();
 		}
 	}
 

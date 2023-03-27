@@ -59,7 +59,7 @@ public class LogicaGeneral {
 
 	private static void modificarId(Escuela escuela) {
 		System.out.println("Modificar id: ");
-		EscuelaId id = new EscuelaId(LogicaUtil.introducirOpcionId(1, 999999));
+		EscuelaId id = new EscuelaId(LogicaUtil.introducirOpcionIdDublicada(1, 999999));
 		escuela.setEscuelaId(id);
 	}
 
@@ -80,13 +80,15 @@ public class LogicaGeneral {
 
 	private static boolean terminar(Escuela escuela) {
 		// Comprobar si los campos estan vacios
-		if (escuela.getNombre().isBlank() || escuela.getProvincia().isBlank() || escuela.getTelefono() == 0 || escuela.getEscuelaId() == null) {
+		if (escuela.getNombre().isBlank() || escuela.getProvincia().isBlank() || escuela.getTelefono() == 0
+				|| escuela.getEscuelaId() == null) {
 			System.out.println("Faltan datos por rellenar.");
 			return false;
 		} else {
 			try {
 				LogicaCRUD.agregarAlgo(escuela);
 				System.out.println("La escuela se creo correctamente");
+				LogicaUtil.pulsarEnter();
 			} catch (Exception e) {
 				System.out.println("No se pudo crear la escuela.");
 			}
@@ -100,7 +102,21 @@ public class LogicaGeneral {
 
 	public static void eliminarEscuela() {
 		System.out.println("¿Qué escuela quiere eliminar?");
-		LogicaUtil.introducirOpcionNumero(0, 0);
+		System.out.println("n. Id de la escuela a eliminar");
+		System.out.println("0. Volver");
+
+		int opcion = LogicaUtil.introducirOpcionNumero(0, 9999999);
+		if (opcion != 0) {
+			opcion = LogicaUtil.introducirOpcionIdExistente(opcion);
+			
+			Escuela escuela = LogicaCRUD.buscarEscuela(opcion);
+			if (LogicaUtil.estarSeguro()){
+				LogicaCRUD.eliminarAlgo(escuela);
+				System.out.println("Se ha elimido correctemente.");
+				LogicaUtil.pulsarEnter();
+			}
+		}
+
 	}
 
 	public static void crearEscuela() {
