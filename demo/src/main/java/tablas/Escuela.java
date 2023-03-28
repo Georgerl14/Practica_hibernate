@@ -10,6 +10,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -43,7 +44,7 @@ public class Escuela implements Serializable {
 			@JoinColumn(name = "id_profesor") })
 	private Set<Profesor> profesores = new HashSet<Profesor>();
 
-	@OneToMany(mappedBy = "escuela", cascade = CascadeType.ALL)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "escuela", cascade = CascadeType.ALL)
 	private List<Alumno> listaAlumno = new ArrayList<Alumno>();
 
 	public Escuela() {

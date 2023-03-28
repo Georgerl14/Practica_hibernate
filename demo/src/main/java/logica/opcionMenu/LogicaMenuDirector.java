@@ -28,17 +28,17 @@ public class LogicaMenuDirector {
 
     public static void modificarNombre(Director director) {
     	System.out.println("Modificar nombre: ");
-    	director.setNombre(LogicaUtil.introducirOpcionTexto());
+    	director.setNombre(LogicaUtil.introducirTexto());
     }
 
     public static void modificarApellido(Director director) {
     	System.out.println("Modificar apellido: ");
-    	director.setApellido(LogicaUtil.introducirOpcionTexto());
+    	director.setApellido(LogicaUtil.introducirTexto());
     }
 
     public static void modificarTelefono(Director director) {
     	System.out.println("Modificar telefono: ");
-    	director.setTelefono(LogicaUtil.introducirOpcionTelefono());
+    	director.setTelefono(LogicaUtil.introducirTelefono());
     }
     
 }

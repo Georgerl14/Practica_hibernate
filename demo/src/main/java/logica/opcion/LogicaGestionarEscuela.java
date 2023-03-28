@@ -30,7 +30,7 @@ public class LogicaGestionarEscuela {
     
     	int opcion = LogicaUtil.introducirOpcionNumero(0, 9999999);
     	if (opcion != 0) {
-    		opcion = LogicaUtil.introducirOpcionIdExistente(opcion);
+    		opcion = LogicaUtil.introducirIdExistente(opcion);
     		Escuela escAntigua = LogicaCRUD.buscarEscuela(opcion);
     		Escuela escNueva = LogicaUtil.clonarEscuela(escAntigua);
     		do {
@@ -50,7 +50,7 @@ public class LogicaGestionarEscuela {
     
     	int opcion = LogicaUtil.introducirOpcionNumero(0, 9999999);
     	if (opcion != 0) {
-    		opcion = LogicaUtil.introducirOpcionIdExistente(opcion);
+    		opcion = LogicaUtil.introducirIdExistente(opcion);
     
     		Escuela escuela = LogicaCRUD.buscarEscuela(opcion);
     		if (LogicaUtil.estarSeguro()) {
@@ -139,27 +139,5 @@ public class LogicaGestionarEscuela {
     
     	return false;
     }
-
-    public static boolean ejecutarOpcionMenuGestionarAlumno(int opcion, Escuela escuela) {
-    	switch (opcion) {
-    		case 1:
-    			LogicaGestionarAlumno.crearAlumno(escuela);
-    			break;
-    
-    			case 2:
-    			LogicaGestionarAlumno.editarAlumno();
-    				break;
-    
-    			case 3:
-    			LogicaGestionarAlumno.eliminarAlumno();
-    				break;
-    
-    		case 0:
-    			return true;
-    	}
-    
-    	return false;
-    }
-
 
 }

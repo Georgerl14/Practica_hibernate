@@ -5,6 +5,7 @@ import interfaz.InterfazMenuDirector;
 import interfaz.InterfazMenuEscuela;
 import interfaz.InterfazMenuProfesor;
 import logica.conector.LogicaCRUD;
+import logica.opcion.LogicaGestionarAlumno;
 import logica.opcion.LogicaGestionarDirector;
 import logica.opcion.LogicaGestionarEscuela;
 import logica.opcion.LogicaGestionarProfesor;
@@ -33,7 +34,7 @@ public class LogicaMenuNexo {
 
 		int opcion = LogicaUtil.introducirOpcionNumero(0, 9999999);
 		if (opcion != 0) {
-			opcion = LogicaUtil.introducirOpcionIdExistente(opcion);
+			opcion = LogicaUtil.introducirIdExistente(opcion);
 			Escuela escuela = LogicaCRUD.buscarEscuela(opcion);
 			do {
 				InterfazMenuEscuela.mostrarGestionarEscuela(escuela);
@@ -50,7 +51,7 @@ public class LogicaMenuNexo {
 			InterfazMenuAlumno.mostrarAlumnos(escuela);
 			InterfazMenuAlumno.mostrarGestionarAlumno();
 			opcion = LogicaUtil.introducirOpcionNumero(0, 4);
-			terminar = LogicaGestionarEscuela.ejecutarOpcionMenuGestionarAlumno(opcion, escuela);
+			terminar = LogicaGestionarAlumno.ejecutarOpcionMenuGestionarAlumno(opcion, escuela);
 		} while (!terminar);
 	}
 

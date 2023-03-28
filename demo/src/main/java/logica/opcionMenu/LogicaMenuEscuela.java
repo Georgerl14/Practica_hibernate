@@ -9,23 +9,23 @@ public class LogicaMenuEscuela {
 
     public static void modificarId(Escuela escuela) {
     	System.out.println("Modificar id: ");
-    	EscuelaId id = new EscuelaId(LogicaUtil.introducirOpcionIdDublicada(1, 999999));
+    	EscuelaId id = new EscuelaId(LogicaUtil.introducirIdDublicada(1, 999999));
     	escuela.setEscuelaId(id);
     }
 
     public static void modificarNombre(Escuela escuela) {
     	System.out.println("Modificar nombre: ");
-    	escuela.setNombre(LogicaUtil.introducirOpcionTexto());
+    	escuela.setNombre(LogicaUtil.introducirTexto());
     }
 
     public static void modificarProvincia(Escuela escuela) {
     	System.out.println("Modificar provincia: ");
-    	escuela.setProvincia(LogicaUtil.introducirOpcionTexto());
+    	escuela.setProvincia(LogicaUtil.introducirTexto());
     }
 
     public static void modificarTelefono(Escuela escuela) {
     	System.out.println("Modificar telefono: ");
-    	escuela.setTelefono(LogicaUtil.introducirOpcionTelefono());
+    	escuela.setTelefono(LogicaUtil.introducirTelefono());
     }
 
     public static boolean terminar(Escuela escuela) {

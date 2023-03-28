@@ -25,7 +25,7 @@ public class LogicaUtil {
         return opcion;
     }
 
-    public static int introducirOpcionIdDublicada(int minimo, int maximo) {
+    public static int introducirIdDublicada(int minimo, int maximo) {
         // Introduce un número entre el valor minimo y maximo.
         int opcion;
         Scanner sc = new Scanner(System.in);
@@ -34,7 +34,7 @@ public class LogicaUtil {
             try {
                 System.out.print("Introduce: ");
                 opcion = Integer.parseInt(sc.nextLine());
-                dublicado = LogicaHQL.comprobarId(opcion);
+                dublicado = LogicaHQL.comprobarIdEscuela(opcion);
 
                 if (dublicado) {
                     System.out.println("El número de id ya ha sido utilizado.");
@@ -49,7 +49,7 @@ public class LogicaUtil {
         return opcion;
     }
 
-    public static int introducirOpcionIdExistente(int minimo, int maximo) {
+    public static int introducirIdExistente(int minimo, int maximo) {
         // Introduce un número entre el valor minimo y maximo.
         int opcion;
         Scanner sc = new Scanner(System.in);
@@ -58,7 +58,7 @@ public class LogicaUtil {
             try {
                 System.out.print("Introduce: ");
                 opcion = Integer.parseInt(sc.nextLine());
-                existente = LogicaHQL.comprobarId(opcion);
+                existente = LogicaHQL.comprobarIdEscuela(opcion);
 
                 if (!existente) {
                     System.out.println("El número de id no existe.");
@@ -73,16 +73,16 @@ public class LogicaUtil {
         return opcion;
     }
 
-    public static int introducirOpcionIdExistente(int opcion) {
+    public static int introducirIdExistente(int opcion) {
         Boolean existente = true;
         do {
             try {
-                existente = LogicaHQL.comprobarId(opcion);
+                existente = LogicaHQL.comprobarIdEscuela(opcion);
 
                 if (!existente) {
                     System.out.println("El número de id no existe.");
                     opcion = introducirOpcionNumero(1, 9999999);
-                    existente = LogicaHQL.comprobarId(opcion);
+                    existente = LogicaHQL.comprobarIdEscuela(opcion);
                 }
 
             } catch (Exception e) {
@@ -94,7 +94,28 @@ public class LogicaUtil {
         return opcion;
     }
 
-    public static int introducirOpcionTelefono() {
+    public static int introducirIdAlumno(int idEscuela, int idAlumno) {
+        Boolean existente = true;
+        do {
+            try {
+                existente = LogicaHQL.comprobarIdAlumno(idEscuela, idAlumno);
+
+                if (!existente) {
+                    System.out.println("El número de id no existe.");
+                    idAlumno = introducirOpcionNumero(1, 9999999);
+                    existente = LogicaHQL.comprobarIdAlumno(idEscuela, idAlumno);
+                }
+
+            } catch (Exception e) {
+                idEscuela = -1;
+                System.out.println("Solo se permiten numeros.");
+            }
+        } while (!existente);
+
+        return idAlumno;
+    }
+
+    public static int introducirTelefono() {
         // Introduce un número entre el valor de un telefono.
         Integer opcion;
         Scanner sc = new Scanner(System.in);
@@ -117,7 +138,7 @@ public class LogicaUtil {
         return opcion;
     }
 
-    public static String introducirOpcionTexto() {
+    public static String introducirTexto() {
         // Introduce una cadena de caracteres con ciertos estandares.
         String cadena;
         Scanner sc = new Scanner(System.in);
