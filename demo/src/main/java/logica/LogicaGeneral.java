@@ -78,7 +78,7 @@ public class LogicaGeneral {
 				break;
 
 			case 4:
-				return terminar(escuela,director);
+				return terminar(escuela, director);
 
 			case 0:
 				return true;
@@ -88,16 +88,37 @@ public class LogicaGeneral {
 	}
 
 	private static boolean terminar(Escuela escuela, Director director) {
-		return false;
-	}
-
-	private static void modificarTelefono(Director director) {
-	}
-
-	private static void modificarApellido(Director director) {
+		if (director.getNombre().isBlank() || director.getApellido().isBlank() || director.getTelefono() == 0) {
+			System.out.println("Faltan datos por rellenar.");
+			return false;
+		} else {
+			try {
+				if (LogicaUtil.estarSeguro()) {
+					escuela.setDirector(director);
+					LogicaCRUD.actualizarAlgo(escuela);
+					System.out.println("El director se creo correctamente.");
+					LogicaUtil.pulsarEnter();
+				}
+			} catch (Exception e) {
+				System.out.println("No se pudo crear el director.");
+			}
+			return true;
+		}
 	}
 
 	private static void modificarNombre(Director director) {
+		System.out.println("Modificar nombre: ");
+		director.setNombre(LogicaUtil.introducirOpcionTexto());
+	}
+
+	private static void modificarApellido(Director director) {
+		System.out.println("Modificar apellido: ");
+		director.setApellido(LogicaUtil.introducirOpcionTexto());
+	}
+
+	private static void modificarTelefono(Director director) {
+		System.out.println("Modificar telefono: ");
+		director.setTelefono(LogicaUtil.introducirOpcionTelefono());
 	}
 
 	public static boolean ejecutarOpcionMenuEditarEscuela(int opcion, Escuela escuela) {
@@ -145,7 +166,7 @@ public class LogicaGeneral {
 			case 0:
 				return true;
 		}
-		
+
 		return false;
 	}
 

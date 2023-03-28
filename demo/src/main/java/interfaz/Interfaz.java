@@ -98,7 +98,7 @@ public class Interfaz {
             System.out.println("3. Telefono: " + director.getTelefono());
 
         System.out.println(".....");
-        System.out.println("4. Terminar creación de escuela");
+        System.out.println("4. Terminar creación de director");
         System.out.println("0. Salir");
     }
 
