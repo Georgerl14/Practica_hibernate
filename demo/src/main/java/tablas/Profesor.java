@@ -12,25 +12,24 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="profesores")
+@Table(name = "profesores")
 public class Profesor implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@Column(name = "id_profesor")
 	private int id;
-	@Column(name="nombre")
+	@Column(name = "nombre")
 	private String nombre;
-	@Column(name="apellido")
+	@Column(name = "apellido")
 	private String apellido;
-	@Column(name="sueldo")
+	@Column(name = "sueldo")
 	private int sueldo;
-	
-	@ManyToMany(cascade = {CascadeType.ALL}, mappedBy = "profesores")
+
+	@ManyToMany(cascade = { CascadeType.ALL }, mappedBy = "profesores")
 	private Set<Escuela> escuelas = new HashSet<Escuela>();
-	
+
 	public Profesor() {
 		super();
 		this.id = 0;
@@ -38,14 +37,14 @@ public class Profesor implements Serializable {
 		this.apellido = "";
 		this.sueldo = 0;
 	}
-	
+
 	public Profesor(int id, String nombre, String apellido, int sueldo) {
 		this.id = id;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.sueldo = sueldo;
 	}
-	
+
 	public Profesor(int id, String nombre, String apellido, int sueldo, Set<Escuela> escuelas) {
 		super();
 		this.id = id;
@@ -96,7 +95,7 @@ public class Profesor implements Serializable {
 	}
 
 	public String toString() {
-		return "Id: " + this.id + "\nNombre: " + this.nombre + "\nApellido: " + this.apellido + "\nSueldo: "
+		return "Id: " + this.id + " nombre: " + this.nombre + " apellido: " + this.apellido + " sueldo: "
 				+ this.sueldo;
 	}
 
