@@ -3,6 +3,7 @@ package logica.opcion;
 import java.util.List;
 import interfaz.InterfazMenuAlumno;
 import logica.conector.LogicaCRUD;
+import logica.conector.LogicaHQL;
 import logica.opcionMenu.LogicaMenuAlumno;
 import logica.util.LogicaUtil;
 import tablas.Alumno;
@@ -86,11 +87,29 @@ public class LogicaGestionarAlumno {
                 eliminarAlumno(escuela);
                 break;
 
+            case 4:
+                actualizarCodigoPostal();
+                break;
+
+            case 5:
+                eliminarRegistro();
+                break;
+
             case 0:
                 return true;
         }
 
         return false;
+    }
+
+    private static void eliminarRegistro() {
+        if(LogicaUtil.estarSeguro())
+            LogicaHQL.eliminarGlobal();
+    }
+
+    private static void actualizarCodigoPostal() {
+        if(LogicaUtil.estarSeguro())
+            LogicaHQL.actualizarGlobal();
     }
 
     public static boolean ejecutarOpcionMenuCrearAlumno(int opcion, Escuela escuela, Alumno alumno) {

@@ -59,15 +59,16 @@ public class InterfazMenuDirector {
         System.out.println("0. Volver");
     }
 
-    public static void mostrarGestionarDirector(Escuela escuela) {
+    public static void mostrarGestionarDirector() {
+        System.out.println(".....");
         System.out.println("1. Editar director");
         System.out.println("2. Eliminar director");
         System.out.println(".....");
         System.out.println("0. Salir");
     }
 
-    public static void mostrarDirector(Escuela escuela) {
-        System.out.println(escuela.getDirector().toString());
+    public static void mostrarDirector(Director director) {
+        System.out.println(director.toString());
     }
 
 }

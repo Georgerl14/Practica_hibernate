@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import tablas.Alumno;
@@ -62,15 +63,15 @@ public class LogicaHQL {
         }
     }
 
-    public static boolean comprobarNombreDirector(int id) {
+    public static boolean comprobarNombreDirector(String nombre) {
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         Session session = sessionFactory.openSession();
         try {
-            Query<Object> query = session.createQuery("SELECT e.escuelaId.idEscuela FROM Escuela e where e.escuelaId.idEscuela = :ident");
-            query.setParameter("ident", id);
+            Query<Object> query = session.createQuery("SELECT d.nombre FROM Director d where d.nombre = :nombreDirector");
+            query.setParameter("nombreDirector", nombre);
 
-            Integer idEscuela = (Integer) query.uniqueResult();
-            if (idEscuela != null)
+            String nombreDirector = (String) query.uniqueResult();
+            if (nombreDirector != null)
                 return true;
             else
                 return false;
@@ -116,4 +117,29 @@ public class LogicaHQL {
             return true;
         }
     }
+
+    public static void actualizarGlobal() {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        Query query = session.createQuery("update Alumno a set a.codigoPostal = a.codigoPostal + 1");	
+        query.executeUpdate();
+
+        tx.commit();
+        session.close();
+    }
+
+    public static void eliminarGlobal() {
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        Session session = sessionFactory.openSession();
+        Transaction tx = session.beginTransaction();
+
+        Query query = session.createQuery("delete from Alumno a ");	
+        query.executeUpdate();
+
+        tx.commit();
+        session.close();
+    }
+
 }

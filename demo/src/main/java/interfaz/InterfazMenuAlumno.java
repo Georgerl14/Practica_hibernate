@@ -11,7 +11,8 @@ public class InterfazMenuAlumno {
         System.out.println("1. Crear alumno");
         System.out.println("2. Editar alumno");
         System.out.println("3. Eliminar alumno");
-        System.out.println("4. Editar global");
+        System.out.println("4. Actualizar código postal");
+        System.out.println("5. Eliminar todos los registros");
         System.out.println(".....");
         System.out.println("0. Salir");
     }

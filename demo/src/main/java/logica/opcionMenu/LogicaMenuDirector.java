@@ -26,9 +26,9 @@ public class LogicaMenuDirector {
     	}
     }
 
-    public static void modificarNombre(Director director) {
+	public static void modificarNombre(Director director) {
     	System.out.println("Modificar nombre: ");
-    	director.setNombre(LogicaUtil.introducirTexto());
+    	director.setNombre(LogicaUtil.introducirNombreDirector());
     }
 
     public static void modificarApellido(Director director) {
@@ -39,6 +39,24 @@ public class LogicaMenuDirector {
     public static void modificarTelefono(Director director) {
     	System.out.println("Modificar telefono: ");
     	director.setTelefono(LogicaUtil.introducirTelefono());
+    }
+
+    public static boolean terminarEditar(Escuela escuela, Director director) {
+        try {
+    		if (LogicaUtil.estarSeguro()) {
+				
+				escuela.setDirector(director);
+				LogicaCRUD.actualizarAlgo(escuela);
+
+    			LogicaCRUD.actualizarAlgo(director);
+    			System.out.println("El director se ha editado correctamente.");
+    			LogicaUtil.pulsarEnter();
+    		}
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    		System.out.println("No se pudo editar el director.");
+    	}
+    	return true;
     }
     
 }

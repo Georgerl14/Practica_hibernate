@@ -11,6 +11,7 @@ import logica.opcion.LogicaGestionarEscuela;
 import logica.opcion.LogicaGestionarProfesor;
 import logica.opcion.LogicaGestionarRelacion;
 import logica.util.LogicaUtil;
+import tablas.Director;
 import tablas.Escuela;
 
 public class LogicaMenuNexo {
@@ -50,7 +51,7 @@ public class LogicaMenuNexo {
 		do {
 			InterfazMenuAlumno.mostrarAlumnos(escuela);
 			InterfazMenuAlumno.mostrarGestionarAlumno();
-			opcion = LogicaUtil.introducirOpcionNumero(0, 4);
+			opcion = LogicaUtil.introducirOpcionNumero(0, 5);
 			terminar = LogicaGestionarAlumno.ejecutarOpcionMenuGestionarAlumno(opcion, escuela);
 		} while (!terminar);
 	}
@@ -58,11 +59,12 @@ public class LogicaMenuNexo {
 	public static void gestionarDirector(Escuela escuela) {
 		int opcion;
 		boolean terminar;
+		Director director = escuela.getDirector();
 		do {
-			InterfazMenuDirector.mostrarDirector(escuela);
-			InterfazMenuDirector.mostrarGestionarDirector(escuela);
-			opcion = LogicaUtil.introducirOpcionNumero(0, 4);
-			terminar = LogicaGestionarDirector.ejecutarOpcionMenuGestionarDirector(opcion, escuela);
+			InterfazMenuDirector.mostrarDirector(director);
+			InterfazMenuDirector.mostrarGestionarDirector();
+			opcion = LogicaUtil.introducirOpcionNumero(0, 2);
+			terminar = LogicaGestionarDirector.ejecutarOpcionMenuGestionarDirector(opcion, escuela, director);
 		} while (!terminar);
 	}
 

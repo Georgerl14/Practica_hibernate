@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import logica.conector.LogicaHQL;
 import tablas.Alumno;
+import tablas.Director;
 import tablas.Escuela;
 
 public class LogicaUtil {
@@ -178,24 +179,44 @@ public class LogicaUtil {
         }
     }
 
-    public static Escuela clonarEscuela(Escuela escuela){
+    public static Escuela clonarEscuela(Escuela escuela) {
         return new Escuela(escuela.getEscuelaId(), escuela.getNombre(), escuela.getProvincia(),
-        escuela.getTelefono(), escuela.getDirector(), escuela.getListaAlumno(),
-        escuela.getProfesores());
+                escuela.getTelefono(), escuela.getDirector(), escuela.getListaAlumno(),
+                escuela.getProfesores());
     }
 
     public static void comprobarDirector(Escuela escuela) {
-        if(escuela.getDirector().equals(null));
+        if (escuela.getDirector().equals(null))
+            ;
     }
 
     public static void salir() {
-    	if (estarSeguro()) {
-    		System.out.println("Programa cerrado correctamente");
-    		System.exit(0);
-    	}
+        if (estarSeguro()) {
+            System.out.println("Programa cerrado correctamente");
+            System.exit(0);
+        }
     }
 
     public static Alumno clonarAlumno(Alumno alumno) {
-        return new Alumno(alumno.getId(), alumno.getNombre(), alumno.getPrimerApellido(), alumno.getSegundoApellido(), alumno.getCodigoPostal(), alumno.getEscuela());
+        return new Alumno(alumno.getId(), alumno.getNombre(), alumno.getPrimerApellido(), alumno.getSegundoApellido(),
+                alumno.getCodigoPostal(), alumno.getEscuela());
+    }
+
+    public static String introducirNombreDirector() {
+        Boolean existente = true;
+        String nombreDirector;
+        do {
+            nombreDirector = introducirTexto();
+            existente = LogicaHQL.comprobarNombreDirector(nombreDirector);
+            if(existente){
+                System.out.println("Este nombre de director ya esta siendo usado.");
+            }
+        } while (existente);
+
+        return nombreDirector;
+    }
+
+    public static Director clonarDirector(Director director) {
+        return new Director(director.getNombre() , director.getApellido(), director.getTelefono());
     }
 }
