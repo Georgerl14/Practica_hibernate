@@ -2,7 +2,7 @@ package logica.opcion;
 
 import interfaz.InterfazMenuAlumno;
 import logica.LogicaGeneral;
-import logica.LogicaUtil;
+import logica.util.LogicaUtil;
 import tablas.Alumno;
 import tablas.Escuela;
 

@@ -1,9 +1,9 @@
 package logica.opcion;
 
 import interfaz.InterfazMenuEscuela;
-import logica.LogicaCRUD;
 import logica.LogicaGeneral;
-import logica.LogicaUtil;
+import logica.conector.LogicaCRUD;
+import logica.util.LogicaUtil;
 import tablas.Escuela;
 
 public class LogicaPrincipalOpcion {

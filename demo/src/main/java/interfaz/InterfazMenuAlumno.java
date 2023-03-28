@@ -1,6 +1,6 @@
 package interfaz;
 
-import logica.LogicaGeneral;
+import logica.mostrar.LogicaMostrar;
 import tablas.Alumno;
 import tablas.Escuela;
 
@@ -39,7 +39,7 @@ public class InterfazMenuAlumno {
 
     public static void mostrarAlumnos(Escuela escuela) {
         System.out.println("Lista de alumnos:" + "\n");
-        LogicaGeneral.logicaMostrarAlumnos(escuela);
+        LogicaMostrar.logicaMostrarAlumnos(escuela);
     }
 
     public static void datosListaAlumnos(Alumno alumno) {

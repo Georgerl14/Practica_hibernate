@@ -1,8 +1,8 @@
-package gestor;
+package mainApp;
 
 import interfaz.InterfazMenuEscuela;
 import logica.LogicaGeneral;
-import logica.LogicaUtil;
+import logica.util.LogicaUtil;
 
 
 public class App {

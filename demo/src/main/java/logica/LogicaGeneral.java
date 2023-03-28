@@ -1,19 +1,13 @@
 package logica;
 
-import java.util.List;
-
-import interfaz.InterfazMenuAlumno;
-import interfaz.InterfazMenuEscuela;
-import interfaz.InterfazMenuProfesor;
 import logica.opcion.LogicaGestionarAlumno;
 import logica.opcion.LogicaGestionarEscuela;
 import logica.opcion.LogicaMenuDirector;
 import logica.opcion.LogicaMenuEscuela;
 import logica.opcion.LogicaPrincipalOpcion;
-import tablas.Alumno;
+import logica.util.LogicaUtil;
 import tablas.Director;
 import tablas.Escuela;
-import tablas.Profesor;
 
 public class LogicaGeneral {
 
@@ -37,7 +31,7 @@ public class LogicaGeneral {
 				break;
 
 			case 0:
-				salir();
+				LogicaUtil.salir();
 				break;
 		}
 	}
@@ -71,22 +65,23 @@ public class LogicaGeneral {
 		return false;
 	}
 
-	public static boolean ejecutarOpcionMenuCrearDirector(int opcion, Escuela escuela, Director director) {
+	public static boolean ejecutarOpcionMenuEditarEscuela(int opcion, Escuela escuela) {
+		// Realizar la opción que sea necesaria.
 		switch (opcion) {
 			case 1:
-				LogicaMenuDirector.modificarNombre(director);
+				LogicaMenuEscuela.modificarNombre(escuela);
 				break;
 
 			case 2:
-				LogicaMenuDirector.modificarApellido(director);
+				LogicaMenuEscuela.modificarProvincia(escuela);
 				break;
 
 			case 3:
-				LogicaMenuDirector.modificarTelefono(director);
+				LogicaMenuEscuela.modificarTelefono(escuela);
 				break;
 
 			case 4:
-				return LogicaMenuDirector.terminar(escuela, director);
+				return LogicaMenuEscuela.terminarEditar(escuela);
 
 			case 0:
 				return true;
@@ -116,23 +111,22 @@ public class LogicaGeneral {
 		return false;
 	}
 
-	public static boolean ejecutarOpcionMenuEditarEscuela(int opcion, Escuela escuela) {
-		// Realizar la opción que sea necesaria.
+	public static boolean ejecutarOpcionMenuCrearDirector(int opcion, Escuela escuela, Director director) {
 		switch (opcion) {
 			case 1:
-				LogicaMenuEscuela.modificarNombre(escuela);
+				LogicaMenuDirector.modificarNombre(director);
 				break;
 
 			case 2:
-				LogicaMenuEscuela.modificarProvincia(escuela);
+				LogicaMenuDirector.modificarApellido(director);
 				break;
 
 			case 3:
-				LogicaMenuEscuela.modificarTelefono(escuela);
+				LogicaMenuDirector.modificarTelefono(director);
 				break;
 
 			case 4:
-				return LogicaMenuEscuela.terminarEditar(escuela);
+				return LogicaMenuDirector.terminar(escuela, director);
 
 			case 0:
 				return true;
@@ -140,6 +134,8 @@ public class LogicaGeneral {
 
 		return false;
 	}
+
+
 
 	public static boolean ejecutarOpcionMenuGestionarEscuela(int opcion, Escuela escuela) {
 		switch (opcion) {
@@ -168,37 +164,6 @@ public class LogicaGeneral {
 		}
 
 		return false;
-	}
-
-	public static void logicaMostrarEscuelas() {
-		List<Escuela> listaEscuelas = LogicaHQL.insertarListaEscuelas();
-
-		for (Escuela escuela : listaEscuelas) {
-			InterfazMenuEscuela.datosListaEscuelas(escuela);
-		}
-	}
-
-	public static void logicaMostrarAlumnos(Escuela escuela) {
-		List<Alumno> listaAlumnos = LogicaHQL.insertarListaAlumnos(escuela);
-
-		for (Alumno alumno : listaAlumnos) {
-			InterfazMenuAlumno.datosListaAlumnos(alumno);
-		}
-	}
-
-	public static void logicaMostrarProfesor(Escuela escuela) {
-		List<Profesor> listaProfesores = LogicaHQL.insertarListaProfesores(escuela);
-
-		for (Profesor profesor : listaProfesores) {
-			InterfazMenuProfesor.datosListaProfesores(profesor);
-		}
-	}
-
-	public static void salir() {
-		if (LogicaUtil.estarSeguro()) {
-			System.out.println("Programa cerrado correctamente");
-			System.exit(0);
-		}
 	}
 
 }

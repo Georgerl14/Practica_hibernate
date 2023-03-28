@@ -1,7 +1,7 @@
 package logica.opcion;
 
-import logica.LogicaCRUD;
-import logica.LogicaUtil;
+import logica.conector.LogicaCRUD;
+import logica.util.LogicaUtil;
 import tablas.Director;
 import tablas.Escuela;
 

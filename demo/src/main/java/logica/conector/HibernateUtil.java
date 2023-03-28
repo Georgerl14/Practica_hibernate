@@ -1,4 +1,4 @@
-package logica;
+package logica.conector;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

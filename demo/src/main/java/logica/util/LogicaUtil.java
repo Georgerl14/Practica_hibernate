@@ -1,7 +1,8 @@
-package logica;
+package logica.util;
 
 import java.util.Scanner;
 
+import logica.conector.LogicaHQL;
 import tablas.Escuela;
 
 public class LogicaUtil {
@@ -163,5 +164,12 @@ public class LogicaUtil {
 
     public static void comprobarDirector(Escuela escuela) {
         if(escuela.getDirector().equals(null));
+    }
+
+    public static void salir() {
+    	if (estarSeguro()) {
+    		System.out.println("Programa cerrado correctamente");
+    		System.exit(0);
+    	}
     }
 }

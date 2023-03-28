@@ -1,4 +1,4 @@
-package logica;
+package logica.conector;
 
 import javax.persistence.PersistenceException;
 
