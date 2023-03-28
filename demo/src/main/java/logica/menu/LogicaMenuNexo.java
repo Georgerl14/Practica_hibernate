@@ -3,6 +3,7 @@ package logica.menu;
 import interfaz.InterfazMenuAlumno;
 import interfaz.InterfazMenuDirector;
 import interfaz.InterfazMenuEscuela;
+import interfaz.InterfazMenuProfesor;
 import logica.LogicaGeneral;
 import logica.conector.LogicaCRUD;
 import logica.util.LogicaUtil;
@@ -44,7 +45,7 @@ public class LogicaMenuNexo {
 		boolean terminar;
 		do {
 			InterfazMenuAlumno.mostrarAlumnos(escuela);
-			InterfazMenuAlumno.mostrarGestionarAlumno(escuela);
+			InterfazMenuAlumno.mostrarGestionarAlumno();
 			opcion = LogicaUtil.introducirOpcionNumero(0, 4);
 			terminar = LogicaGeneral.ejecutarOpcionMenuGestionarAlumno(opcion, escuela);
 		} while (!terminar);
@@ -62,7 +63,14 @@ public class LogicaMenuNexo {
 	}
 
 	public static void gestionarProfesores(Escuela escuela) {
-		System.out.println("gestionarProfesores");
+		int opcion;
+		boolean terminar;
+		do {
+			InterfazMenuProfesor.mostrarProfesores(escuela);
+			InterfazMenuProfesor.mostrarGestionarProfesor();
+			opcion = LogicaUtil.introducirOpcionNumero(0, 4);
+			terminar = LogicaGeneral.ejecutarOpcionMenuGestionarProfesor(opcion, escuela);
+		} while (!terminar);
 	}
 
 }

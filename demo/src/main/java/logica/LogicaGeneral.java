@@ -171,4 +171,8 @@ public class LogicaGeneral {
         return false;
     }
 
+    public static boolean ejecutarOpcionMenuGestionarProfesor(int opcion, Escuela escuela) {
+        return false;
+    }
+
 }

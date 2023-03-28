@@ -6,13 +6,13 @@ import tablas.Profesor;
 
 public class InterfazMenuProfesor {
 
-    public static void mostrarProfesores(Escuela escuela) {
-        System.out.println("Lista de profesores:" + "\n");
-        LogicaMostrar.logicaMostrarProfesor(escuela);
-    }
-
-    public static void datosListaProfesores(Profesor profesor) {
-        System.out.println(profesor.toString());
+    public static void mostrarGestionarProfesor() {
+        System.out.println("1. Crear alumno");
+        System.out.println("2. Editar alumno");
+        System.out.println("3. Eliminar alumno");
+        System.out.println("4. Editar global");
+        System.out.println(".....");
+        System.out.println("0. Salir");
     }
 
     public static void mostrarCrearProfesor(Profesor profesor) {
@@ -45,4 +45,41 @@ public class InterfazMenuProfesor {
         System.out.println("0. Salir");
     }
     
+    public static void mostrarEditarProfesor(Profesor profAntigua, Profesor profNueva) {
+        System.out.println("-----------------");
+        System.out.println("Editar profesor");
+        System.out.println(".....");
+
+        if (profAntigua.getNombre().equals(profNueva.getNombre()))
+            System.out.println("1. Nombre: " + profAntigua.getNombre());
+        else
+            System.out.println("1. Nombre actual: " + profNueva.getNombre() + " antiguo: " + profAntigua.getNombre());
+
+        if (profAntigua.getApellido().equals(profNueva.getApellido()))
+            System.out.println("2. Apellido: " + profAntigua.getApellido());
+        else
+            System.out.println(
+                    "2. Apellido actual: " + profNueva.getApellido() + " antigua: "
+                            + profAntigua.getApellido());
+
+        if (profAntigua.getSueldo() == profNueva.getSueldo())
+            System.out.println("3. Sueldo: " + profAntigua.getSueldo());
+        else
+            System.out.println(
+                    "3. Sueldo actual: " + profNueva.getSueldo() + " antigua: "
+                            + profAntigua.getSueldo());
+
+        System.out.println(".....");
+        System.out.println("4. Terminar editar la profesor");
+        System.out.println("0. Volver");
+    }
+
+    public static void mostrarProfesores(Escuela escuela) {
+        System.out.println("Lista de profesores:" + "\n");
+        LogicaMostrar.logicaMostrarProfesor(escuela);
+    }
+
+    public static void datosListaProfesores(Profesor profesor) {
+        System.out.println(profesor.toString());
+    }
 }

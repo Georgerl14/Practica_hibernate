@@ -30,29 +30,29 @@ public class InterfazMenuDirector {
         System.out.println("0. Salir");
     }
 
-    public static void mostrarEditarDirector(Director alumAntigua, Director alumNueva) {
+    public static void mostrarEditarDirector(Director dirAntigua, Director dirNueva) {
         System.out.println("-----------------");
-        System.out.println("Editar Director");
+        System.out.println("Editar director");
         System.out.println(".....");
 
-        if (alumAntigua.getNombre().equals(alumNueva.getNombre()))
-            System.out.println("1. Nombre: " + alumAntigua.getNombre());
+        if (dirAntigua.getNombre().equals(dirNueva.getNombre()))
+            System.out.println("1. Nombre: " + dirAntigua.getNombre());
         else
-            System.out.println("1. Nombre actual: " + alumNueva.getNombre() + " antiguo: " + alumAntigua.getNombre());
+            System.out.println("1. Nombre actual: " + dirNueva.getNombre() + " antiguo: " + dirAntigua.getNombre());
 
-        if (alumAntigua.getApellido().equals(alumNueva.getApellido()))
-            System.out.println("2. Apellido: " + alumAntigua.getApellido());
+        if (dirAntigua.getApellido().equals(dirNueva.getApellido()))
+            System.out.println("2. Apellido: " + dirAntigua.getApellido());
         else
             System.out.println(
-                    "2. Apellido actual: " + alumNueva.getApellido() + " antigua: "
-                            + alumAntigua.getApellido());
+                    "2. Apellido actual: " + dirNueva.getApellido() + " antigua: "
+                            + dirAntigua.getApellido());
 
-        if (alumAntigua.getTelefono() == alumNueva.getTelefono())
-            System.out.println("3. Telefono: " + alumAntigua.getTelefono());
+        if (dirAntigua.getTelefono() == dirNueva.getTelefono())
+            System.out.println("3. Telefono: " + dirAntigua.getTelefono());
         else
             System.out.println(
-                    "3. Telefono actual: " + alumNueva.getTelefono() + " antigua: "
-                            + alumAntigua.getTelefono());
+                    "3. Telefono actual: " + dirNueva.getTelefono() + " antigua: "
+                            + dirAntigua.getTelefono());
 
         System.out.println(".....");
         System.out.println("4. Terminar editar el director");

@@ -6,7 +6,7 @@ import tablas.Escuela;
 
 public class InterfazMenuAlumno {
 
-    public static void mostrarGestionarAlumno(Escuela escuela) {
+    public static void mostrarGestionarAlumno() {
         System.out.println("1. Crear alumno");
         System.out.println("2. Editar alumno");
         System.out.println("3. Eliminar alumno");
