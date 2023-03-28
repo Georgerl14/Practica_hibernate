@@ -25,6 +25,9 @@ public class Director implements Serializable {
 
 	public Director() {
 		super();
+		this.nombre = "";
+		this.apellido = "";
+		this.telefono = 0;
 	}
 
 	public Director(String nombre, String apellido, int telefono) {

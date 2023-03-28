@@ -3,8 +3,8 @@ package logica;
 import java.util.List;
 import interfaz.Interfaz;
 import tablas.Alumno;
+import tablas.Director;
 import tablas.Escuela;
-import tablas.EscuelaId;
 import tablas.Profesor;
 
 public class LogicaGeneral {
@@ -13,15 +13,19 @@ public class LogicaGeneral {
 		// Realizar la opción que sea necesaria.
 		switch (opcion) {
 			case 1:
-				crearEscuela();
+				LogicaPrincipalOpcion.crearEscuela();
 				break;
 
 			case 2:
-				editarEscuela();
+				LogicaPrincipalOpcion.editarEscuela();
 				break;
 
 			case 3:
-				eliminarEscuela();
+				LogicaPrincipalOpcion.eliminarEscuela();
+				break;
+
+			case 4:
+				LogicaPrincipalOpcion.gestionarEscuela();
 				break;
 
 			case 0:
@@ -34,48 +38,85 @@ public class LogicaGeneral {
 		// Realizar la opción que sea necesaria.
 		switch (opcion) {
 			case 1:
-				modificarId(escuela);
+				LogicaMenuEscuela.modificarId(escuela);
 				break;
 
 			case 2:
-				modificarNombre(escuela);
+				LogicaMenuEscuela.modificarNombre(escuela);
 				break;
 
 			case 3:
-				modificarProvincia(escuela);
+				LogicaMenuEscuela.modificarProvincia(escuela);
 				break;
 
 			case 4:
-				modificarTelefono(escuela);
+				LogicaMenuEscuela.modificarTelefono(escuela);
 				break;
 
 			case 5:
-				return terminar(escuela);
+				return LogicaMenuEscuela.terminar(escuela);
 
 			case 0:
 				return true;
 		}
 
 		return false;
+	}
+
+	private static boolean ejecutarOpcionMenuCrearDirector(int opcion, Escuela escuela, Director director) {
+		switch (opcion) {
+			case 1:
+				modificarNombre(director);
+				break;
+
+			case 2:
+				modificarApellido(director);
+				break;
+
+			case 3:
+				modificarTelefono(director);
+				break;
+
+			case 4:
+				return terminar(escuela,director);
+
+			case 0:
+				return true;
+		}
+
+		return false;
+	}
+
+	private static boolean terminar(Escuela escuela, Director director) {
+		return false;
+	}
+
+	private static void modificarTelefono(Director director) {
+	}
+
+	private static void modificarApellido(Director director) {
+	}
+
+	private static void modificarNombre(Director director) {
 	}
 
 	public static boolean ejecutarOpcionMenuEditarEscuela(int opcion, Escuela escuela) {
 		// Realizar la opción que sea necesaria.
 		switch (opcion) {
 			case 1:
-				modificarNombre(escuela);
+				LogicaMenuEscuela.modificarNombre(escuela);
 				break;
 
 			case 2:
-				modificarProvincia(escuela);
+				LogicaMenuEscuela.modificarProvincia(escuela);
 				break;
 
 			case 3:
-				modificarTelefono(escuela);
+				LogicaMenuEscuela.modificarTelefono(escuela);
 				break;
 
 			case 4:
-				return terminarEditar(escuela);
+				return LogicaMenuEscuela.terminarEditar(escuela);
 
 			case 0:
 				return true;
@@ -84,108 +125,39 @@ public class LogicaGeneral {
 		return false;
 	}
 
-	private static boolean terminarEditar(Escuela escuela) {
-		// Comprobar si los campos estan vacios
-		try {
-			LogicaCRUD.actualizarAlgo(escuela);
-			System.out.println("La escuela se ha editado correctamente");
-			LogicaUtil.pulsarEnter();
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("No se pudo editar la escuela.");
+	static boolean ejecutarOpcionMenuGestionarEscuela(int opcion, Escuela escuela) {
+		switch (opcion) {
+			case 1:
+				crearDirector(escuela);
+				break;
+
+			case 2:
+				LogicaMenuEscuela.modificarProvincia(escuela);
+				break;
+
+			case 3:
+				LogicaMenuEscuela.modificarTelefono(escuela);
+				break;
+
+			case 4:
+				return LogicaMenuEscuela.terminarEditar(escuela);
+
+			case 0:
+				return true;
 		}
-		return true;
+		
+		return false;
 	}
 
-	private static void modificarId(Escuela escuela) {
-		System.out.println("Modificar id: ");
-		EscuelaId id = new EscuelaId(LogicaUtil.introducirOpcionIdDublicada(1, 999999));
-		escuela.setEscuelaId(id);
-	}
+	private static void crearDirector(Escuela escuela) {
+		Director director = new Director();
 
-	private static void modificarNombre(Escuela escuela) {
-		System.out.println("Modificar nombre: ");
-		escuela.setNombre(LogicaUtil.introducirOpcionTexto());
-	}
-
-	private static void modificarProvincia(Escuela escuela) {
-		System.out.println("Modificar provincia: ");
-		escuela.setProvincia(LogicaUtil.introducirOpcionTexto());
-	}
-
-	private static void modificarTelefono(Escuela escuela) {
-		System.out.println("Modificar telefono: ");
-		escuela.setTelefono(LogicaUtil.introducirOpcionTelefono());
-	}
-
-	private static boolean terminar(Escuela escuela) {
-		// Comprobar si los campos estan vacios
-		if (escuela.getNombre().isBlank() || escuela.getProvincia().isBlank() || escuela.getTelefono() == 0
-				|| escuela.getEscuelaId() == null) {
-			System.out.println("Faltan datos por rellenar.");
-			return false;
-		} else {
-			try {
-				LogicaCRUD.agregarAlgo(escuela);
-				System.out.println("La escuela se creo correctamente");
-				LogicaUtil.pulsarEnter();
-			} catch (Exception e) {
-				System.out.println("No se pudo crear la escuela.");
-			}
-			return true;
-		}
-	}
-
-	public static void editarEscuela() {
-		boolean terminar;
-
-		System.out.println("¿Qué escuela quiere editar?");
-		System.out.println("n. Id de la escuela a editar");
-		System.out.println(".....");
-		System.out.println("0. Volver");
-
-		int opcion = LogicaUtil.introducirOpcionNumero(0, 9999999);
-		if (opcion != 0) {
-			opcion = LogicaUtil.introducirOpcionIdExistente(opcion);
-			Escuela escAntigua = LogicaCRUD.buscarEscuela(opcion);
-			Escuela escNueva = LogicaUtil.clonarEscuela(escAntigua);
-			do {
-				Interfaz.mostrarEditarEscuela(escAntigua, escNueva);
-				opcion = LogicaUtil.introducirOpcionNumero(0, 4);
-				terminar = ejecutarOpcionMenuEditarEscuela(opcion, escNueva);
-			} while (!terminar);
-
-		}
-	}
-
-	public static void eliminarEscuela() {
-		System.out.println("¿Qué escuela quiere eliminar?");
-		System.out.println("n. Id de la escuela a eliminar");
-		System.out.println(".....");
-		System.out.println("0. Volver");
-
-		int opcion = LogicaUtil.introducirOpcionNumero(0, 9999999);
-		if (opcion != 0) {
-			opcion = LogicaUtil.introducirOpcionIdExistente(opcion);
-
-			Escuela escuela = LogicaCRUD.buscarEscuela(opcion);
-			if (LogicaUtil.estarSeguro()) {
-				LogicaCRUD.eliminarAlgo(escuela);
-				System.out.println("Se ha elimido correctemente.");
-				LogicaUtil.pulsarEnter();
-			}
-		}
-
-	}
-
-	public static void crearEscuela() {
-		Escuela escuela = new Escuela();
 		int opcion;
 		boolean terminar;
 		do {
-			Interfaz.mostrarCrearEscuela(escuela);
-			opcion = LogicaUtil.introducirOpcionNumero(0, 5);
-			terminar = ejecutarOpcionMenuCrearEscuela(opcion, escuela);
+			Interfaz.mostrarCrearDirector(director);
+			opcion = LogicaUtil.introducirOpcionNumero(0, 4);
+			terminar = ejecutarOpcionMenuCrearDirector(opcion, escuela, director);
 		} while (!terminar);
 	}
 
@@ -214,8 +186,10 @@ public class LogicaGeneral {
 	}
 
 	public static void salir() {
-		System.out.println("Programa cerrado correctamente");
-		System.exit(0);
+		if (LogicaUtil.estarSeguro()) {
+			System.out.println("Programa cerrado correctamente");
+			System.exit(0);
+		}
 	}
 
 }

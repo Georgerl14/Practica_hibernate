@@ -17,7 +17,7 @@ public class LogicaUtil {
                 opcion = Integer.parseInt(sc.nextLine());
             } catch (Exception e) {
                 opcion = -1;
-                System.out.println("Solo se permiten numeros");
+                System.out.println("Solo se permiten numeros.");
             }
         } while (opcion < minimo || opcion > maximo);
 
@@ -36,12 +36,12 @@ public class LogicaUtil {
                 dublicado = LogicaHQL.comprobarId(opcion);
 
                 if (dublicado) {
-                    System.out.println("El número de id ya ha sido utilizado");
+                    System.out.println("El número de id ya ha sido utilizado.");
                 }
 
             } catch (Exception e) {
                 opcion = -1;
-                System.out.println("Solo se permiten numeros");
+                System.out.println("Solo se permiten numeros.");
             }
         } while ((opcion < minimo || opcion > maximo) || dublicado);
 
@@ -65,7 +65,7 @@ public class LogicaUtil {
 
             } catch (Exception e) {
                 opcion = -1;
-                System.out.println("Solo se permiten numeros");
+                System.out.println("Solo se permiten numeros.");
             }
         } while ((opcion < minimo || opcion > maximo) || !existente);
 
@@ -86,7 +86,7 @@ public class LogicaUtil {
 
             } catch (Exception e) {
                 opcion = -1;
-                System.out.println("Solo se permiten numeros");
+                System.out.println("Solo se permiten numeros.");
             }
         } while (!existente);
 
@@ -102,9 +102,14 @@ public class LogicaUtil {
             try {
                 System.out.print("Introduce: ");
                 opcion = Integer.parseInt(sc.nextLine());
+
+                if (String.valueOf(opcion).length() != 9) {
+                    System.out.println("Solo se permiten numeros de 9 digitos.");
+                }
+
             } catch (Exception e) {
                 opcion = -1;
-                System.out.println("Solo se permiten numeros");
+                System.out.println("Solo se permiten numeros.");
             }
         } while (String.valueOf(opcion).length() != 9);
 
@@ -130,7 +135,7 @@ public class LogicaUtil {
         Scanner sc = new Scanner(System.in);
         int opcion;
 
-        System.out.println("¿Esta seguro de que quiere realizar este procedimiento?");
+        System.out.println("¿Esta seguro de que quiere realizar esta acción?");
         System.out.println("1. Si");
         System.out.println("2. No");
         opcion = introducirOpcionNumero(1, 2);
@@ -143,7 +148,7 @@ public class LogicaUtil {
 
     public static void pulsarEnter() {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Pulsa enter para continuar");
+        System.out.print("Pulsa enter para continuar: ");
         try {
             sc.nextLine();
         } catch (Exception e) {

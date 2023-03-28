@@ -2,6 +2,7 @@ package interfaz;
 
 import logica.LogicaGeneral;
 import tablas.Alumno;
+import tablas.Director;
 import tablas.Escuela;
 import tablas.Profesor;
 
@@ -12,6 +13,7 @@ public class Interfaz {
         System.out.println("1. Crear escuela");
         System.out.println("2. Editar escuela");
         System.out.println("3. Eliminar escuela");
+        System.out.println("4. Gestionar escuela");
         System.out.println(".....");
         System.out.println("0. Salir");
     }
@@ -75,6 +77,31 @@ public class Interfaz {
         System.out.println("0. Salir");
     }
 
+    public static void mostrarCrearDirector(Director director) {
+        System.out.println("-----------------");
+        System.out.println("Crear director");
+        System.out.println(".....");
+
+        if (director.getNombre().isBlank())
+            System.out.println("1. Nombre: VACIO");
+        else
+            System.out.println("1. Nombre: " + director.getNombre());
+
+        if (director.getApellido().isBlank())
+            System.out.println("2. Apellido: VACIO");
+        else
+            System.out.println("2. Apellido: " + director.getApellido());
+
+        if (director.getTelefono() == 0)
+            System.out.println("3. Telefono: VACIO");
+        else
+            System.out.println("3. Telefono: " + director.getTelefono());
+
+        System.out.println(".....");
+        System.out.println("4. Terminar creación de escuela");
+        System.out.println("0. Salir");
+    }
+
     public static void mostrarEditarEscuela(Escuela escAntigua, Escuela escNueva) {
         System.out.println("-----------------");
         System.out.println("Editar escuela");
@@ -101,4 +128,23 @@ public class Interfaz {
         System.out.println("4. Terminar editar la escuela");
         System.out.println("0. Volver");
     }
+
+    public static void mostrarGestionarEscuela(Escuela escuela) {
+        System.out.println("-----------------");
+        System.out.println("Gestionar escuela");
+        System.out.println(".....");
+        
+        try {
+            escuela.getDirector();
+            System.out.println("1. Añadir director");
+        } catch (Exception e) {
+            System.out.println("1. Gestionar director: " + escuela.getDirector().getNombre());
+        }
+        
+        System.out.println("2. Gestionar alumnos");
+        System.out.println("3. Gestionar profesores");    
+        System.out.println(".....");
+        System.out.println("0. Volver");
+    }
+
 }
