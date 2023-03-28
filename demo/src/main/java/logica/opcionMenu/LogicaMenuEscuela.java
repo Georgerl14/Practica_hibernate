@@ -1,4 +1,4 @@
-package logica.opcion;
+package logica.opcionMenu;
 
 import logica.conector.LogicaCRUD;
 import logica.util.LogicaUtil;

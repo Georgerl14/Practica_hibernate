@@ -1,7 +1,6 @@
 package logica.opcion;
 
 import interfaz.InterfazMenuAlumno;
-import logica.LogicaGeneral;
 import logica.util.LogicaUtil;
 import tablas.Alumno;
 import tablas.Escuela;
@@ -15,7 +14,7 @@ public class LogicaGestionarAlumno {
     	do {
     		InterfazMenuAlumno.mostrarCrearAlumno(alumno);
     		opcion = LogicaUtil.introducirOpcionNumero(0, 5);
-    		terminar = LogicaGeneral.ejecutarOpcionMenuCrearEscuela(opcion, escuela);
+    		terminar = LogicaGestionarAlumno.ejecutarOpcionMenuCrearAlumno(opcion, escuela);
     	} while (!terminar);
     }
 
@@ -23,6 +22,10 @@ public class LogicaGestionarAlumno {
     }
 
     public static void eliminarAlumno() {
+    }
+
+    public static boolean ejecutarOpcionMenuCrearAlumno(int opcion, Escuela escuela) {
+    	return false;
     }
     
 }

@@ -4,8 +4,11 @@ import interfaz.InterfazMenuAlumno;
 import interfaz.InterfazMenuDirector;
 import interfaz.InterfazMenuEscuela;
 import interfaz.InterfazMenuProfesor;
-import logica.LogicaGeneral;
 import logica.conector.LogicaCRUD;
+import logica.opcion.LogicaGestionarDirector;
+import logica.opcion.LogicaGestionarEscuela;
+import logica.opcion.LogicaGestionarProfesor;
+import logica.opcion.LogicaGestionarRelacion;
 import logica.util.LogicaUtil;
 import tablas.Escuela;
 
@@ -16,7 +19,7 @@ public class LogicaMenuNexo {
 		while (true) {
 			InterfazMenuEscuela.mostrarEscuelas();
 			InterfazMenuEscuela.mostrarOpcionesEscuela();
-			LogicaGeneral.ejecutarOpcionMenuGestionarEscuela(LogicaUtil.introducirOpcionNumero(0, 4));
+			LogicaGestionarEscuela.ejecutarOpcionMenuGestionarEscuela(LogicaUtil.introducirOpcionNumero(0, 4));
 		}
 	}
 
@@ -35,7 +38,7 @@ public class LogicaMenuNexo {
 			do {
 				InterfazMenuEscuela.mostrarGestionarEscuela(escuela);
 				opcion = LogicaUtil.introducirOpcionNumero(0, 4);
-				terminar = LogicaGeneral.ejecutarOpcionMenuRelacionEscuela(opcion, escuela);
+				terminar = LogicaGestionarRelacion.ejecutarOpcionMenuRelacionEscuela(opcion, escuela);
 			} while (!terminar);
 		}
 	}
@@ -47,7 +50,7 @@ public class LogicaMenuNexo {
 			InterfazMenuAlumno.mostrarAlumnos(escuela);
 			InterfazMenuAlumno.mostrarGestionarAlumno();
 			opcion = LogicaUtil.introducirOpcionNumero(0, 4);
-			terminar = LogicaGeneral.ejecutarOpcionMenuGestionarAlumno(opcion, escuela);
+			terminar = LogicaGestionarEscuela.ejecutarOpcionMenuGestionarAlumno(opcion, escuela);
 		} while (!terminar);
 	}
 
@@ -58,7 +61,7 @@ public class LogicaMenuNexo {
 			InterfazMenuDirector.mostrarDirector(escuela);
 			InterfazMenuDirector.mostrarGestionarDirector(escuela);
 			opcion = LogicaUtil.introducirOpcionNumero(0, 4);
-			terminar = LogicaGeneral.ejecutarOpcionMenuGestionarDirector(opcion, escuela);
+			terminar = LogicaGestionarDirector.ejecutarOpcionMenuGestionarDirector(opcion, escuela);
 		} while (!terminar);
 	}
 
@@ -69,7 +72,7 @@ public class LogicaMenuNexo {
 			InterfazMenuProfesor.mostrarProfesores(escuela);
 			InterfazMenuProfesor.mostrarGestionarProfesor();
 			opcion = LogicaUtil.introducirOpcionNumero(0, 4);
-			terminar = LogicaGeneral.ejecutarOpcionMenuGestionarProfesor(opcion, escuela);
+			terminar = LogicaGestionarProfesor.ejecutarOpcionMenuGestionarProfesor(opcion, escuela);
 		} while (!terminar);
 	}
 
