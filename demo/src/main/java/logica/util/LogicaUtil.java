@@ -3,6 +3,7 @@ package logica.util;
 import java.util.Scanner;
 
 import logica.conector.LogicaHQL;
+import tablas.Alumno;
 import tablas.Escuela;
 
 public class LogicaUtil {
@@ -192,5 +193,9 @@ public class LogicaUtil {
     		System.out.println("Programa cerrado correctamente");
     		System.exit(0);
     	}
+    }
+
+    public static Alumno clonarAlumno(Alumno alumno) {
+        return new Alumno(alumno.getId(), alumno.getNombre(), alumno.getPrimerApellido(), alumno.getSegundoApellido(), alumno.getCodigoPostal(), alumno.getEscuela());
     }
 }

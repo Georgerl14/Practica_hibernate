@@ -34,11 +34,11 @@ public class LogicaGestionarAlumno {
         if (idAlumno != 0) {
             idAlumno = LogicaUtil.introducirIdAlumno(idEscuela, idAlumno);
             Alumno alumAntigua = buscarAlumno(escuela, idAlumno);
-            Alumno alumNueva = alumAntigua;
+            Alumno alumNueva = LogicaUtil.clonarAlumno(alumAntigua);
             do {
                 InterfazMenuAlumno.mostrarEditarAlumno(alumAntigua, alumNueva);
                 int opcion = LogicaUtil.introducirOpcionNumero(0, 5);
-                terminar = LogicaGestionarAlumno.ejecutarOpcionMenuEditarAlumno(opcion, escuela, alumNueva);
+                terminar = LogicaGestionarAlumno.ejecutarOpcionMenuEditarAlumno(opcion, alumNueva);
             } while (!terminar);
         }
     }
@@ -122,19 +122,23 @@ public class LogicaGestionarAlumno {
         return false;
     }
 
-    public static boolean ejecutarOpcionMenuEditarAlumno(int opcion, Escuela escuela, Alumno alumNueva) {
+    public static boolean ejecutarOpcionMenuEditarAlumno(int opcion, Alumno alumNueva) {
         // Realizar la opción que sea necesaria.
         switch (opcion) {
             case 1:
                 LogicaMenuAlumno.modificarNombre(alumNueva);
                 break;
 
-            case 3:
+            case 2:
                 LogicaMenuAlumno.modificarPrimerApellido(alumNueva);
                 break;
 
-            case 4:
+            case 3:
                 LogicaMenuAlumno.modificarSegundoApellido(alumNueva);
+                break;
+
+            case 4:
+                LogicaMenuAlumno.modificarCodigoPostal(alumNueva);
                 break;
 
             case 5:
