@@ -1,32 +1,34 @@
-package logica;
+package logica.opcion;
 
+import logica.LogicaCRUD;
+import logica.LogicaUtil;
 import tablas.Escuela;
 import tablas.EscuelaId;
 
 public class LogicaMenuEscuela {
 
-    static void modificarId(Escuela escuela) {
+    public static void modificarId(Escuela escuela) {
     	System.out.println("Modificar id: ");
     	EscuelaId id = new EscuelaId(LogicaUtil.introducirOpcionIdDublicada(1, 999999));
     	escuela.setEscuelaId(id);
     }
 
-    static void modificarNombre(Escuela escuela) {
+    public static void modificarNombre(Escuela escuela) {
     	System.out.println("Modificar nombre: ");
     	escuela.setNombre(LogicaUtil.introducirOpcionTexto());
     }
 
-    static void modificarProvincia(Escuela escuela) {
+    public static void modificarProvincia(Escuela escuela) {
     	System.out.println("Modificar provincia: ");
     	escuela.setProvincia(LogicaUtil.introducirOpcionTexto());
     }
 
-    static void modificarTelefono(Escuela escuela) {
+    public static void modificarTelefono(Escuela escuela) {
     	System.out.println("Modificar telefono: ");
     	escuela.setTelefono(LogicaUtil.introducirOpcionTelefono());
     }
 
-    static boolean terminar(Escuela escuela) {
+    public static boolean terminar(Escuela escuela) {
     	// Comprobar si los campos estan vacios
     	if (escuela.getNombre().isBlank() || escuela.getProvincia().isBlank() || escuela.getTelefono() == 0
     			|| escuela.getEscuelaId() == null) {
@@ -46,7 +48,7 @@ public class LogicaMenuEscuela {
     	}
     }
 
-    static boolean terminarEditar(Escuela escuela) {
+    public static boolean terminarEditar(Escuela escuela) {
     	// Comprobar si los campos estan vacios
     	try {
     		if (LogicaUtil.estarSeguro()) {

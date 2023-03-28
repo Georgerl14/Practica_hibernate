@@ -1,6 +1,9 @@
-package logica;
+package logica.opcion;
 
 import interfaz.Interfaz;
+import logica.LogicaCRUD;
+import logica.LogicaGeneral;
+import logica.LogicaUtil;
 import tablas.Escuela;
 
 public class LogicaPrincipalOpcion {
@@ -58,7 +61,7 @@ public class LogicaPrincipalOpcion {
     	}
     }
 
-    static void gestionarEscuela() {
+    public static void gestionarEscuela() {
     	boolean terminar = false;
     
     	System.out.println("¿Qué escuela quiere gestionar?");

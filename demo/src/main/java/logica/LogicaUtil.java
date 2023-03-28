@@ -160,4 +160,8 @@ public class LogicaUtil {
         escuela.getTelefono(), escuela.getDirector(), escuela.getListaAlumno(),
         escuela.getProfesores());
     }
+
+    public static void comprobarDirector(Escuela escuela) {
+        if(escuela.getDirector().equals(null));
+    }
 }

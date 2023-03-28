@@ -1,6 +1,7 @@
 package interfaz;
 
 import logica.LogicaGeneral;
+import logica.LogicaUtil;
 import tablas.Alumno;
 import tablas.Director;
 import tablas.Escuela;
@@ -135,10 +136,10 @@ public class Interfaz {
         System.out.println(".....");
         
         try {
-            escuela.getDirector();
-            System.out.println("1. Añadir director");
-        } catch (Exception e) {
+            LogicaUtil.comprobarDirector(escuela);
             System.out.println("1. Gestionar director: " + escuela.getDirector().getNombre());
+        } catch (Exception e) {
+            System.out.println("1. Añadir director");
         }
         
         System.out.println("2. Gestionar alumnos");

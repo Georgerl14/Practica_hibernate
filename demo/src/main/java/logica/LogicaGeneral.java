@@ -2,6 +2,10 @@ package logica;
 
 import java.util.List;
 import interfaz.Interfaz;
+import logica.opcion.LogicaGestionarEscuela;
+import logica.opcion.LogicaMenuDirector;
+import logica.opcion.LogicaMenuEscuela;
+import logica.opcion.LogicaPrincipalOpcion;
 import tablas.Alumno;
 import tablas.Director;
 import tablas.Escuela;
@@ -63,62 +67,28 @@ public class LogicaGeneral {
 		return false;
 	}
 
-	private static boolean ejecutarOpcionMenuCrearDirector(int opcion, Escuela escuela, Director director) {
+	public static boolean ejecutarOpcionMenuCrearDirector(int opcion, Escuela escuela, Director director) {
 		switch (opcion) {
 			case 1:
-				modificarNombre(director);
+				LogicaMenuDirector.modificarNombre(director);
 				break;
 
 			case 2:
-				modificarApellido(director);
+				LogicaMenuDirector.modificarApellido(director);
 				break;
 
 			case 3:
-				modificarTelefono(director);
+				LogicaMenuDirector.modificarTelefono(director);
 				break;
 
 			case 4:
-				return terminar(escuela, director);
+				return LogicaMenuDirector.terminar(escuela, director);
 
 			case 0:
 				return true;
 		}
 
 		return false;
-	}
-
-	private static boolean terminar(Escuela escuela, Director director) {
-		if (director.getNombre().isBlank() || director.getApellido().isBlank() || director.getTelefono() == 0) {
-			System.out.println("Faltan datos por rellenar.");
-			return false;
-		} else {
-			try {
-				if (LogicaUtil.estarSeguro()) {
-					escuela.setDirector(director);
-					LogicaCRUD.actualizarAlgo(escuela);
-					System.out.println("El director se creo correctamente.");
-					LogicaUtil.pulsarEnter();
-				}
-			} catch (Exception e) {
-				System.out.println("No se pudo crear el director.");
-			}
-			return true;
-		}
-	}
-
-	private static void modificarNombre(Director director) {
-		System.out.println("Modificar nombre: ");
-		director.setNombre(LogicaUtil.introducirOpcionTexto());
-	}
-
-	private static void modificarApellido(Director director) {
-		System.out.println("Modificar apellido: ");
-		director.setApellido(LogicaUtil.introducirOpcionTexto());
-	}
-
-	private static void modificarTelefono(Director director) {
-		System.out.println("Modificar telefono: ");
-		director.setTelefono(LogicaUtil.introducirOpcionTelefono());
 	}
 
 	public static boolean ejecutarOpcionMenuEditarEscuela(int opcion, Escuela escuela) {
@@ -146,10 +116,15 @@ public class LogicaGeneral {
 		return false;
 	}
 
-	static boolean ejecutarOpcionMenuGestionarEscuela(int opcion, Escuela escuela) {
+	public static boolean ejecutarOpcionMenuGestionarEscuela(int opcion, Escuela escuela) {
 		switch (opcion) {
 			case 1:
-				crearDirector(escuela);
+				try {
+					LogicaUtil.comprobarDirector(escuela);
+					LogicaGestionarEscuela.gestionarDirector(escuela);
+				} catch(Exception e) {
+					LogicaGestionarEscuela.crearDirector(escuela);
+				}
 				break;
 
 			case 2:
@@ -168,18 +143,6 @@ public class LogicaGeneral {
 		}
 
 		return false;
-	}
-
-	private static void crearDirector(Escuela escuela) {
-		Director director = new Director();
-
-		int opcion;
-		boolean terminar;
-		do {
-			Interfaz.mostrarCrearDirector(director);
-			opcion = LogicaUtil.introducirOpcionNumero(0, 4);
-			terminar = ejecutarOpcionMenuCrearDirector(opcion, escuela, director);
-		} while (!terminar);
 	}
 
 	public static void logicaMostrarEscuelas() {
