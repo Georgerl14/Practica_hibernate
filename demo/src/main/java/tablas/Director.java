@@ -61,4 +61,8 @@ public class Director implements Serializable {
 		this.telefono = telefono;
 	}
 
+	@Override
+    public String toString() {
+        return "Nombre " + nombre + ", apellido " + apellido + ", telefono " + telefono;
+    }
 }

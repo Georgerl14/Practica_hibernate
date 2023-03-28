@@ -1,33 +1,34 @@
 package logica;
 
+import logica.menu.LogicaMenuNexo;
 import logica.opcion.LogicaGestionarAlumno;
-import logica.opcion.LogicaGestionarEscuela;
+import logica.opcion.LogicaGestionarRelacion;
 import logica.opcion.LogicaMenuDirector;
 import logica.opcion.LogicaMenuEscuela;
-import logica.opcion.LogicaPrincipalOpcion;
+import logica.opcion.LogicaGestionarEscuela;
 import logica.util.LogicaUtil;
 import tablas.Director;
 import tablas.Escuela;
 
 public class LogicaGeneral {
 
-	public static void ejecutarOpcionMenuPrincipal(int opcion) {
+	public static void ejecutarOpcionMenuGestionarEscuela(int opcion) {
 		// Realizar la opción que sea necesaria.
 		switch (opcion) {
 			case 1:
-				LogicaPrincipalOpcion.crearEscuela();
+				LogicaGestionarEscuela.crearEscuela();
 				break;
 
 			case 2:
-				LogicaPrincipalOpcion.editarEscuela();
+				LogicaGestionarEscuela.editarEscuela();
 				break;
 
 			case 3:
-				LogicaPrincipalOpcion.eliminarEscuela();
+				LogicaGestionarEscuela.eliminarEscuela();
 				break;
 
 			case 4:
-				LogicaPrincipalOpcion.gestionarEscuela();
+				LogicaMenuNexo.gestionarRelacion();
 				break;
 
 			case 0:
@@ -137,23 +138,23 @@ public class LogicaGeneral {
 
 
 
-	public static boolean ejecutarOpcionMenuGestionarEscuela(int opcion, Escuela escuela) {
+	public static boolean ejecutarOpcionMenuRelacionEscuela(int opcion, Escuela escuela) {
 		switch (opcion) {
 			case 1:
 				try {
 					LogicaUtil.comprobarDirector(escuela);
-					LogicaGestionarEscuela.gestionarDirector(escuela);
+					LogicaMenuNexo.gestionarDirector(escuela);
 				} catch(Exception e) {
-					LogicaGestionarEscuela.crearDirector(escuela);
+					LogicaGestionarRelacion.crearDirector(escuela);
 				}
 				break;
 
 			case 2:
-				LogicaGestionarEscuela.gestionarAlumnos(escuela);
+				LogicaMenuNexo.gestionarAlumnos(escuela);
 				break;
 
 			case 3:
-				LogicaGestionarEscuela.gestionarProfesores(escuela);
+				LogicaMenuNexo.gestionarProfesores(escuela);
 				break;
 
 			case 4:
@@ -165,5 +166,9 @@ public class LogicaGeneral {
 
 		return false;
 	}
+
+    public static boolean ejecutarOpcionMenuGestionarDirector(int opcion, Escuela escuela) {
+        return false;
+    }
 
 }

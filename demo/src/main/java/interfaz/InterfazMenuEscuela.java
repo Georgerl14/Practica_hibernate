@@ -17,17 +17,6 @@ public class InterfazMenuEscuela {
         System.out.println("0. Salir");
     }
 
-    public static void mostrarEscuelas() {
-        System.out.println("Lista de escuelas:" + "\n");
-        LogicaMostrar.logicaMostrarEscuelas();
-    }
-
-    public static void datosListaEscuelas(Escuela escuela) {
-        System.out.println(escuela.toString());
-        System.out.println(escuela.informacionExtra());
-        System.out.println();
-    }
-
     public static void mostrarCrearEscuela(Escuela escuela) {
         System.out.println("-----------------");
         System.out.println("Crear escuela");
@@ -104,4 +93,15 @@ public class InterfazMenuEscuela {
         System.out.println("0. Volver");
     }
     
+    public static void mostrarEscuelas() {
+        System.out.println("Lista de escuelas:" + "\n");
+        LogicaMostrar.logicaMostrarEscuelas();
+    }
+
+    public static void datosListaEscuelas(Escuela escuela) {
+        System.out.println(escuela.toString());
+        System.out.println(escuela.informacionExtra());
+        System.out.println();
+    }
+
 }
