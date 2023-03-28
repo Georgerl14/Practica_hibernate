@@ -1,7 +1,11 @@
 package logica;
 
 import java.util.List;
-import interfaz.Interfaz;
+
+import interfaz.InterfazMenuAlumno;
+import interfaz.InterfazMenuEscuela;
+import interfaz.InterfazMenuProfesor;
+import logica.opcion.LogicaGestionarAlumno;
 import logica.opcion.LogicaGestionarEscuela;
 import logica.opcion.LogicaMenuDirector;
 import logica.opcion.LogicaMenuEscuela;
@@ -91,6 +95,27 @@ public class LogicaGeneral {
 		return false;
 	}
 
+	public static boolean ejecutarOpcionMenuGestionarAlumno(int opcion, Escuela escuela) {
+		switch (opcion) {
+			case 1:
+				LogicaGestionarAlumno.crearAlumno(escuela);
+				break;
+
+				case 2:
+				LogicaGestionarAlumno.editarAlumno();
+					break;
+
+				case 3:
+				LogicaGestionarAlumno.eliminarAlumno();
+					break;
+
+			case 0:
+				return true;
+		}
+
+		return false;
+	}
+
 	public static boolean ejecutarOpcionMenuEditarEscuela(int opcion, Escuela escuela) {
 		// Realizar la opción que sea necesaria.
 		switch (opcion) {
@@ -128,11 +153,11 @@ public class LogicaGeneral {
 				break;
 
 			case 2:
-				LogicaMenuEscuela.modificarProvincia(escuela);
+				LogicaGestionarEscuela.gestionarAlumnos(escuela);
 				break;
 
 			case 3:
-				LogicaMenuEscuela.modificarTelefono(escuela);
+				LogicaGestionarEscuela.gestionarProfesores(escuela);
 				break;
 
 			case 4:
@@ -149,7 +174,7 @@ public class LogicaGeneral {
 		List<Escuela> listaEscuelas = LogicaHQL.insertarListaEscuelas();
 
 		for (Escuela escuela : listaEscuelas) {
-			Interfaz.datosListaEscuelas(escuela);
+			InterfazMenuEscuela.datosListaEscuelas(escuela);
 		}
 	}
 
@@ -157,7 +182,7 @@ public class LogicaGeneral {
 		List<Alumno> listaAlumnos = LogicaHQL.insertarListaAlumnos(escuela);
 
 		for (Alumno alumno : listaAlumnos) {
-			Interfaz.datosListaAlumnos(alumno);
+			InterfazMenuAlumno.datosListaAlumnos(alumno);
 		}
 	}
 
@@ -165,7 +190,7 @@ public class LogicaGeneral {
 		List<Profesor> listaProfesores = LogicaHQL.insertarListaProfesores(escuela);
 
 		for (Profesor profesor : listaProfesores) {
-			Interfaz.datosListaProfesores(profesor);
+			InterfazMenuProfesor.datosListaProfesores(profesor);
 		}
 	}
 

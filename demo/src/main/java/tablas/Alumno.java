@@ -41,6 +41,10 @@ public class Alumno implements Serializable {
 	
 	public Alumno() {
 		super();
+		this.nombre = "";
+		this.primerApellido = "";
+		this.segundoApellido = "";
+		this.codigoPostal = 0;
 	}
 	
 	public Alumno(String nombre, String primerApellido, String segundoApellido, int codigoPostal) {

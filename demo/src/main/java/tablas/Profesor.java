@@ -21,7 +21,6 @@ public class Profesor implements Serializable {
 	@Id
 	@Column(name = "id_profesor")
 	private int id;
-	
 	@Column(name="nombre")
 	private String nombre;
 	@Column(name="apellido")
@@ -34,6 +33,10 @@ public class Profesor implements Serializable {
 	
 	public Profesor() {
 		super();
+		this.id = 0;
+		this.nombre = "";
+		this.apellido = "";
+		this.sueldo = 0;
 	}
 	
 	public Profesor(int id, String nombre, String apellido, int sueldo) {

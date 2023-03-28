@@ -1,20 +1,20 @@
 package gestor;
 
-import interfaz.Interfaz;
+import interfaz.InterfazMenuEscuela;
 import logica.LogicaGeneral;
 import logica.LogicaUtil;
 
 
 public class App {
     public static void main(String[] args) throws Exception {
-        menuEscuelas();
+        gestorBaseDatos();
     }
 
-    private static void menuEscuelas() {
+    private static void gestorBaseDatos() {
         System.out.println("Gestor de la base de datos: "+"ParaHibernate"+"\n");
         while (true) {
-            Interfaz.mostrarEscuelas();
-            Interfaz.mostrarOpcionesEscuela();
+            InterfazMenuEscuela.mostrarEscuelas();
+            InterfazMenuEscuela.mostrarOpcionesEscuela();
             LogicaGeneral.ejecutarOpcionMenuPrincipal(LogicaUtil.introducirOpcionNumero(0, 4));
         }
     }

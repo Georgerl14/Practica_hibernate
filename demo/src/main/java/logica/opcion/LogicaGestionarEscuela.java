@@ -1,6 +1,7 @@
 package logica.opcion;
 
-import interfaz.Interfaz;
+import interfaz.InterfazMenuAlumno;
+import interfaz.InterfazMenuDirector;
 import logica.LogicaGeneral;
 import logica.LogicaUtil;
 import tablas.Director;
@@ -14,7 +15,7 @@ public class LogicaGestionarEscuela {
     	int opcion;
     	boolean terminar;
     	do {
-    		Interfaz.mostrarCrearDirector(director);
+    		InterfazMenuDirector.mostrarCrearDirector(director);
     		opcion = LogicaUtil.introducirOpcionNumero(0, 4);
     		terminar = LogicaGeneral.ejecutarOpcionMenuCrearDirector(opcion, escuela, director);
     	} while (!terminar);
@@ -22,6 +23,21 @@ public class LogicaGestionarEscuela {
 
     public static void gestionarDirector(Escuela escuela) {
         System.out.println("gestionarDirector");
+    }
+
+    public static void gestionarAlumnos(Escuela escuela) { 
+    	int opcion;
+    	boolean terminar;
+    	do {
+            InterfazMenuAlumno.mostrarAlumnos(escuela);
+    		InterfazMenuAlumno.mostrarGestionarAlumno(escuela);
+    		opcion = LogicaUtil.introducirOpcionNumero(0, 4);
+    		terminar = LogicaGeneral.ejecutarOpcionMenuGestionarAlumno(opcion, escuela);
+    	} while (!terminar);
+    }
+
+    public static void gestionarProfesores(Escuela escuela) {
+        System.out.println("gestionarProfesores");
     }
     
 }

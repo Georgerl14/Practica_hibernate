@@ -1,6 +1,6 @@
 package logica.opcion;
 
-import interfaz.Interfaz;
+import interfaz.InterfazMenuEscuela;
 import logica.LogicaCRUD;
 import logica.LogicaGeneral;
 import logica.LogicaUtil;
@@ -13,7 +13,7 @@ public class LogicaPrincipalOpcion {
     	int opcion;
     	boolean terminar;
     	do {
-    		Interfaz.mostrarCrearEscuela(escuela);
+    		InterfazMenuEscuela.mostrarCrearEscuela(escuela);
     		opcion = LogicaUtil.introducirOpcionNumero(0, 5);
     		terminar = LogicaGeneral.ejecutarOpcionMenuCrearEscuela(opcion, escuela);
     	} while (!terminar);
@@ -53,7 +53,7 @@ public class LogicaPrincipalOpcion {
     		Escuela escAntigua = LogicaCRUD.buscarEscuela(opcion);
     		Escuela escNueva = LogicaUtil.clonarEscuela(escAntigua);
     		do {
-    			Interfaz.mostrarEditarEscuela(escAntigua, escNueva);
+    			InterfazMenuEscuela.mostrarEditarEscuela(escAntigua, escNueva);
     			opcion = LogicaUtil.introducirOpcionNumero(0, 4);
     			terminar = LogicaGeneral.ejecutarOpcionMenuEditarEscuela(opcion, escNueva);
     		} while (!terminar);
@@ -74,7 +74,7 @@ public class LogicaPrincipalOpcion {
     		opcion = LogicaUtil.introducirOpcionIdExistente(opcion);
     		Escuela escuela = LogicaCRUD.buscarEscuela(opcion);
     		do {
-    			Interfaz.mostrarGestionarEscuela(escuela);
+    			InterfazMenuEscuela.mostrarGestionarEscuela(escuela);
     			opcion = LogicaUtil.introducirOpcionNumero(0, 4);
     			terminar = LogicaGeneral.ejecutarOpcionMenuGestionarEscuela(opcion, escuela);
     		} while (!terminar);
