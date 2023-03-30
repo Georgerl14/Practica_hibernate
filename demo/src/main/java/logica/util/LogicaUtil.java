@@ -186,8 +186,7 @@ public class LogicaUtil {
     }
 
     public static void comprobarDirector(Escuela escuela) {
-        if (escuela.getDirector().equals(null))
-            ;
+        if (escuela.getDirector().equals(null));
     }
 
     public static void salir() {

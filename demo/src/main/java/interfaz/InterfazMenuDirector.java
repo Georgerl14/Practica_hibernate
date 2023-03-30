@@ -1,7 +1,6 @@
 package interfaz;
 
 import tablas.Director;
-import tablas.Escuela;
 
 public class InterfazMenuDirector {
 

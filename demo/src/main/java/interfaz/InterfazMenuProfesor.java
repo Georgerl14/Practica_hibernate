@@ -7,10 +7,9 @@ import tablas.Profesor;
 public class InterfazMenuProfesor {
 
     public static void mostrarGestionarProfesor() {
-        System.out.println("1. Crear alumno");
-        System.out.println("2. Editar alumno");
-        System.out.println("3. Eliminar alumno");
-        System.out.println("4. Editar global");
+        System.out.println("1. Crear profesor");
+        System.out.println("2. Editar profesor");
+        System.out.println("3. Eliminar profesor");
         System.out.println(".....");
         System.out.println("0. Salir");
     }

@@ -1,6 +1,5 @@
 package logica.opcion;
 
-import java.util.List;
 import interfaz.InterfazMenuAlumno;
 import logica.conector.LogicaCRUD;
 import logica.conector.LogicaHQL;
